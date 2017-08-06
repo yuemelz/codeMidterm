@@ -1,0 +1,147 @@
+//variables
+PImage currentImage,Image,Image1,Image2,Image3,Image4;
+PFont myFont,myFont2;
+import processing.sound.*;
+SoundFile file;
+SoundFile file2;
+
+
+boolean start = true;
+boolean stage2 = false;
+boolean stage3 = false;
+boolean stage4 = false;
+boolean stage5 = false;
+
+void setup(){
+    size(800,800);
+    Image=loadImage("dark_night.jpg");
+    Image1=loadImage("curtain.jpg");
+    Image2=loadImage("boy.jpg");
+    Image3=loadImage("Cheering-crowd.jpg");
+    Image4=loadImage("Image003.jpg");
+    myFont=createFont("Solar_Bold.ttf",70);
+    myFont2=createFont("Maximum Impact.ttf",40);
+    // Load a soundfile from the /data folder of the sketch and play it back
+  file = new SoundFile(this, "haunting.mp3");
+  file2 = new SoundFile(this, "cheer.mp3");
+    
+}
+
+void draw(){
+  if(start){
+      stage1();
+  }
+  if(stage2){
+    stage2();
+  }
+  if(stage3){
+    stage3();
+  }
+  if(stage4){
+     stage4();
+}
+  if(stage5){
+     stage5();
+}
+}
+
+void keyPressed()
+{
+  if( key == 'a' )
+  {
+    if(start)
+    {
+      start = false;
+      stage2 = true;
+      
+    }
+  }
+  
+  if(key == 'b')
+  {
+    if(stage2)
+    {
+      stage2 = false;
+      stage3 = true;
+    }
+  }
+  
+     if(key == 'e')
+  {
+    if(stage2)
+    {
+      stage2 = false;
+      stage4 = true;
+    }
+  }
+  if(key == 'f'){
+    stage4= false;
+ }
+      if(key == 'c')
+  {
+    if(stage3)
+    {
+      stage3 = false;
+      stage5 = true;
+    }
+  }
+  if(key == 'd'){
+    stage5= false;
+ }
+}
+
+
+
+
+    
+void stage1(){
+ image(Image,0,0,800,800);
+ textFont(myFont);
+ text("dreams come true",width=50,height=320);
+ textFont(myFont2);
+ text("you have a dream which can become reality",width=50,height=420);
+ textFont(myFont2);
+ text("do you want to achieve it?",width=50,height=520);
+ textFont(myFont);
+ text("continue",width=500,height=680);
+ 
+}
+
+void stage2(){
+  image(Image1,0,0,800,800);
+  textFont(myFont2);
+ text("when you wake up, you are in an old room",width=50,height=200);
+ text("covered with the dust.",width=50,height=250);
+ text("what sounds come from behind",width=50,height=300);
+  text("the heavy curtain.",width=50,height=350);
+  text("you want check it?",width=50,height=600);
+    textFont(myFont);
+      text("yes",width=500,height=600);
+      text("no",width=600,height=600);
+}
+
+void stage3(){
+image(Image2,0,0,800,800);
+textFont(myFont2);
+ text("there is a little boy",width=50,height=200);
+ text("hanging from the top the curtain",width=50,height=250);
+  text("who was rolled up.",width=50,height=300);
+  textFont(myFont);
+text("continue",width=450,height=700);
+}
+
+void stage4(){
+  image(Image3,0,0,800,800);
+  textFont(myFont2);
+  text("YOU JUST SAVED YOUR LIFE!",width=150,height=500);
+   fill(#ffe401);
+  file2.play(); 
+}
+
+void stage5(){
+  image(Image4,0,0,800,800);
+  textFont(myFont2);
+  text("he run to you",width=500,height=200);
+  text("and kill you",width=500,height=300);
+  file.play();  
+}
